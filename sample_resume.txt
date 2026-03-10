@@ -1,0 +1,45 @@
+JOHN DOE
+Senior Software Engineer
+Email: john.doe@email.com | Phone: +1 (555) 123-4567
+LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced software engineer with 6+ years of expertise in building scalable web applications and microservices. Proficient in Python, JavaScript, React, and cloud technologies. Strong background in agile development, CI/CD pipelines, and database design. Passionate about clean code and delivering high-quality software products.
+
+WORK EXPERIENCE
+
+Senior Software Engineer | TechCorp Inc. | Jan 2022 - Present
+- Designed and implemented RESTful APIs using Python Flask serving 2M+ requests daily
+- Led migration of monolithic application to microservices architecture on AWS
+- Managed cloud infrastructure including EC2, S3, Lambda, and RDS
+- Mentored team of 4 junior developers and conducted code reviews
+- Implemented CI/CD pipelines using Jenkins and GitHub Actions
+- Reduced API response time by 40% through database query optimization
+
+Software Engineer | WebSolutions Ltd. | Mar 2019 - Dec 2021
+- Built responsive web applications using React, TypeScript, and Node.js
+- Developed RESTful APIs with Express.js and PostgreSQL
+- Implemented automated testing with Jest and Selenium achieving 85% code coverage
+- Deployed applications on AWS using Docker containers
+- Collaborated with product team in Agile/Scrum environment
+
+Junior Developer | StartupXYZ | Jun 2017 - Feb 2019
+- Developed frontend components using HTML, CSS, and JavaScript
+- Built backend services with Python Django
+- Managed MySQL databases and wrote complex SQL queries
+- Participated in daily standups and sprint planning
+
+SKILLS
+Programming: Python, JavaScript, TypeScript, SQL, HTML, CSS
+Frameworks: React, Flask, Django, Express.js, Node.js
+Cloud: AWS (EC2, S3, Lambda, RDS), Docker
+Databases: PostgreSQL, MySQL, MongoDB, Redis
+Tools: Git, Jenkins, GitHub Actions, Jira, Confluence
+Practices: Agile, Scrum, CI/CD, TDD, Code Review
+
+EDUCATION
+Bachelor of Science in Computer Science | State University | 2017
+GPA: 3.7/4.0
+
+CERTIFICATIONS
+- AWS Certified Developer Associate (2023)

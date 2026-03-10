@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered Resume Analyzer — Get ATS score, keyword analysis, and actionable improvement suggestions for your resume.">
+    <title>AI Resume Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                </div>
+                <span class="logo-text">ResumeAI</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="5" />
+                    <path
+                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="heroSection">
+            <div class="hero-glow"></div>
+            <h1 class="hero-title">
+                Analyze Your Resume<br>
+                <span class="gradient-text">With AI Precision</span>
+            </h1>
+            <p class="hero-subtitle">Upload your resume and paste the job description to get instant ATS scoring,
+                keyword analysis, and personalized improvement suggestions .</p>
+        </section>
+
+        <!-- ===== INPUT SECTION ===== -->
+        <section class="input-section" id="inputSection">
+            <div class="input-grid">
+                <!-- Upload Card -->
+                <div class="card upload-card">
+                    <div class="card-header">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <h2>Upload Resume</h2>
+                    </div>
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-zone-inner">
+                            <div class="drop-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="12" y1="18" x2="12" y2="12" />
+                                    <polyline points="9 15 12 12 15 15" />
+                                </svg>
+                            </div>
+                            <p class="drop-text">Drag & drop your resume here</p>
+                            <p class="drop-hint">or click to browse</p>
+                            <p class="drop-formats">PDF, DOCX, or TXT (max 5 MB)</p>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden>
+                    </div>
+                    <div class="file-info" id="fileInfo" style="display:none;">
+                        <div class="file-badge">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span id="fileName"></span>
+                            <span id="fileSize" class="file-size"></span>
+                        </div>
+                        <button class="file-remove" id="fileRemove" aria-label="Remove file">✕</button>
+                    </div>
+                </div>
+
+                <!-- JD Card -->
+                <div class="card jd-card">
+                    <div class="card-header">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        <h2>Job Description</h2>
+                    </div>
+                    <div class="textarea-wrapper">
+                        <textarea id="jdInput" placeholder="Paste the full job description here…" rows="12"></textarea>
+                        <div class="char-count"><span id="charCount">0</span> characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyze Button -->
+            <div class="analyze-wrapper">
+                <button class="btn-analyze" id="analyzeBtn" disabled>
+                    <span class="btn-text">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10" />
+                        </svg>
+                        Analyze Resume
+                    </span>
+                    <span class="btn-loading" style="display:none;">
+                        <div class="spinner"></div>
+                        Analyzing…
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== ERROR ===== -->
+        <div class="error-banner" id="errorBanner" style="display:none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            <span id="errorText"></span>
+            <button class="error-close" id="errorClose">✕</button>
+        </div>
+
+        <!-- ===== LOADING SKELETON ===== -->
+        <section class="loading-section" id="loadingSection" style="display:none;">
+            <div class="loading-header">
+                <div class="spinner-lg"></div>
+                <h2>Analyzing your resume…</h2>
+                <p>Running NLP extraction and AI analysis. This may take 10-20 seconds.</p>
+            </div>
+            <div class="skeleton-grid">
+                <div class="skeleton-card">
+                    <div class="skeleton-line w-60"></div>
+                    <div class="skeleton-bar"></div>
+                    <div class="skeleton-line w-40"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-line w-60"></div>
+                    <div class="skeleton-bar"></div>
+                    <div class="skeleton-line w-40"></div>
+                </div>
+                <div class="skeleton-card full">
+                    <div class="skeleton-line w-80"></div>
+                    <div class="skeleton-line w-100"></div>
+                    <div class="skeleton-line w-60"></div>
+                    <div class="skeleton-line w-90"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RESULTS DASHBOARD ===== -->
+        <section class="results-section" id="resultsSection" style="display:none;">
+            <!-- Back button -->
+            <div class="results-header">
+                <button class="btn-back" id="backBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12" />
+                        <polyline points="12 19 5 12 12 5" />
+                    </svg>
+                    New Analysis
+                </button>
+                <h2 class="results-title">Analysis Results</h2>
+            </div>
+
+            <!-- Score Cards -->
+            <div class="scores-grid">
+                <div class="score-card ats-card">
+                    <div class="score-label">ATS Compatibility</div>
+                    <div class="score-ring" id="atsRing">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="ring-fill ats-fill" cx="60" cy="60" r="52" id="atsCircle" />
+                        </svg>
+                        <div class="score-value" id="atsScore">0</div>
+                    </div>
+                    <div class="score-hint">Keyword-based scoring</div>
+                </div>
+                <div class="score-card match-card">
+                    <div class="score-label">Semantic Match</div>
+                    <div class="score-ring" id="matchRing">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="ring-bg" cx="60" cy="60" r="52" />
+                            <circle class="ring-fill match-fill" cx="60" cy="60" r="52" id="matchCircle" />
+                        </svg>
+                        <div class="score-value" id="matchScore">0</div>
+                    </div>
+                    <div class="score-hint">Profile-to-role fit</div>
+                </div>
+            </div>
+
+            <!-- Summary Side-by-Side -->
+            <div class="summary-grid">
+                <div class="card summary-card">
+                    <h3>📄 Resume Summary</h3>
+                    <p id="resumeSummary"></p>
+                </div>
+                <div class="card summary-card">
+                    <h3>🎯 JD Requirements</h3>
+                    <p id="jdSummary"></p>
+                </div>
+            </div>
+
+            <!-- Keywords -->
+            <div class="card keywords-card">
+                <h3>🔑 Keyword Analysis</h3>
+                <div class="keywords-grid">
+                    <div>
+                        <h4 class="kw-heading matched-heading">✅ Matched Keywords</h4>
+                        <div class="tag-list" id="matchedTags"></div>
+                    </div>
+                    <div>
+                        <h4 class="kw-heading missing-heading">❌ Missing Keywords</h4>
+                        <div class="tag-list" id="missingTags"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strengths -->
+            <div class="card strengths-card">
+                <h3>💪 Key Strengths</h3>
+                <ul class="strengths-list" id="strengthsList"></ul>
+            </div>
+
+            <!-- Suggestions -->
+            <div class="card suggestions-card">
+                <div class="suggestions-header">
+                    <h3>🚀 Improvement Suggestions</h3>
+                    <span class="suggestion-count" id="suggestionCount"></span>
+                </div>
+                <div class="suggestions-list" id="suggestionsList"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p> created by <strong>Bala Dharmaraju </strong> using NLP </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
